@@ -1,13 +1,13 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Games 4 Devs</a>
 	<div>
-		<form action="" method="post">
+		<form action="<?= base_url() ?>dashboard/pesquisar" method="post">
 			<input class="form-control form-control-dark" type="text" name="busca" id="busca" placeholder="Search" aria-label="Search" value="">
 		</form>
 	</div>
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="">Sign out</a>
+      <a class="nav-link" href="<?= base_url() ?>login/logout">Sign out</a>
     </li>
   </ul>
 </nav>
