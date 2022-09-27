@@ -21,15 +21,32 @@
 			<tbody>
 				<?php foreach($games as $game) : ?>
                     <tr>
-                <td><?= $game["id"] ?></td>
-                <td><?= $game["name"] ?></td>
-                <td><?= $game["price"] ?></td>
-                <td><?= $game["developer"] ?></td>
-                <td><?= $game["release_date"] ?></td>
-                <td>xxx</td>
-              </tr>
-              <?php endforeach; ?>
+						<td><?= $game["id"] ?></td>
+						<td><?= $game["name"] ?></td>
+						<td><?= $game["price"] ?></td>
+						<td><?= $game["developer"] ?></td>
+						<td><?= $game["release_date"] ?></td>
+                		<td>
+							<a href="<?= base_url() ?>games/edit/<?= $game['id'] ?>" class="btn btn-sm btn-warning"><i class="fas fa-pencil-alt"></i></a>
+						</td>
+                		<td>
+							<a href="javascript:goDelete(<?= $game['id'] ?>)" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+						</td>
+              		</tr>
+              	<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>
 </main>
+
+<script>
+	function goDelete(id) {
+		var myUrl = 'games/delete/' + id
+		if(confirm("Deseja realmente apagar esse registro?")) {
+			window.location.href = myUrl;
+		} else {
+			alert("Registro não alterado");
+			return false;
+		}
+	}
+</script>	

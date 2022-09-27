@@ -24,4 +24,10 @@ class Games_model extends CI_Model {
 		$this->db->where("id", $id);
 		return $this->db->update("tb_games", $game);
 	}
+
+	public function destroy($id)
+	{
+		$this->db->where("id", $id);
+		return $this->db->delete("tb_games");
+	}
 }
