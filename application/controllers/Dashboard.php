@@ -15,6 +15,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model("games_model");
 		$data["games"] = $this->games_model->index();
 		$data["title"] = "Dashboard - CodeIgniter";
+		$data["result"] = $this->games_model->sum();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/nav-top', $data);
@@ -32,6 +33,20 @@ class Dashboard extends CI_Controller {
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/nav-top', $data);
 		$this->load->view('pages/resultado', $data);
+		$this->load->view('templates/footer', $data);
+		$this->load->view('templates/js', $data);
+	}
+
+	public function filter()
+	{	
+		$selectedOption = $_POST["filter"];
+		$data["filtered"] = $this->games_model->filter($selectedOption);
+		$data["games"] = $data["filtered"];
+		$data["result"] = $this->games_model->sum();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/nav-top', $data);
+		$this->load->view('pages/dashboard', $data);
 		$this->load->view('templates/footer', $data);
 		$this->load->view('templates/js', $data);
 	}

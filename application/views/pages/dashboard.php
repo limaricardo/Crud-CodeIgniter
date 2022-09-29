@@ -15,6 +15,16 @@
         </div>
 
         <div class="table-responsive">
+          <form action="<?= base_url() ?>dashboard/filter" method="POST">
+          <select id="filter" name="filter">
+            <option disabled>Selecione o filtro:</option>
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+          </select>
+          <input type="submit"></input>
+          </form>
+          
+
           <table class="table table-bordered table-hover">
             <thead>
               <tr>
@@ -37,6 +47,14 @@
                 <td>xxx</td>
               </tr>
               <?php endforeach; ?>
+              <tr>
+                <td>#</td>
+                <td>Total</td>
+                <td><?= $result ?></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
             </tbody>
           </table>
         </div>
