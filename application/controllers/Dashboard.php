@@ -12,7 +12,6 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{	
-		$this->load->model("games_model");
 		$data["games"] = $this->games_model->index();
 		$data["title"] = "Dashboard - CodeIgniter";
 		$data["result"] = $this->games_model->sum();
