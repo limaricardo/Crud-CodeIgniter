@@ -16,6 +16,7 @@ class Gerenciador extends CI_Controller {
 		$data["title"] = "Dashboard - Gerenciador Conteúdo";
 		$data["size"] = $this->gerenciador_model->titleSize('title_size');
 		$data["article"] = $this->gerenciador_model->articleText('article');
+		$data["vote"] = $this->db->get("tb_vote")->result_array();
 
         $this->load->view('templates/header', $data);
 		$this->load->view('templates/nav-top', $data);
@@ -31,10 +32,21 @@ class Gerenciador extends CI_Controller {
 
 		$title_size = $_POST;
 
-		$this->gerenciador_model->storeTitleSize($title_size);
+		$this->db->where('name', 'title_size');
+        $query = $this->db->get('tb_font_size');
+        $query = $query->num_rows();
+
+		if($query === 0)
+		{
+			$this->gerenciador_model->insertTitleSize($title_size);
+		}else 
+		{
+			$this->gerenciador_model->updateTitleSize($title_size);
+		}
 
 		$data["size"] = $this->gerenciador_model->titleSize('title_size');
 		$data["article"] = $this->gerenciador_model->articleText('article');
+		$data["vote"] = $this->db->get("tb_vote")->result_array();
 
 		$this->load->view('pages/homepage', $data); 
 	}
@@ -42,16 +54,29 @@ class Gerenciador extends CI_Controller {
 	// Guardar "content" do artigo
 	public function storeArticle() 
 	{
-
 		$article = $_POST;
 
-		$this->gerenciador_model->storeArticle($article);
+		$this->db->where('name', 'article');
+		$query = $this->db->get('tb_text');
+        $query = $query->num_rows();
+
+		if($query === 0)
+		{
+			$this->gerenciador_model->insertArticle($article);
+		}else 
+		{
+			$this->gerenciador_model->updateArticle($article);
+		}
 
 		$data["size"] = $this->gerenciador_model->titleSize('title_size');
 		$data["article"] = $this->gerenciador_model->articleText('article');
+		$data["vote"] = $this->db->get("tb_vote")->result_array();
 
 		$this->load->view('pages/homepage', $data); 
+
+
 	}
+
 
 	// Gerar uma nova caixa de votação
 
@@ -75,7 +100,7 @@ class Gerenciador extends CI_Controller {
 		$data["size"] = $this->gerenciador_model->titleSize('title_size');
 		$data["article"] = $this->gerenciador_model->articleText('article');
 		$data["vote"] = $this->db->get("tb_vote")->result_array();
-		
+
 		$this->load->view('pages/homepage', $data); 
 
 

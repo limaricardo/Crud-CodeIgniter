@@ -19,26 +19,32 @@ class Gerenciador_model extends CI_Model {
 
 
     // Criar ou atualizar linha de fonte-size do título
-    public function storeTitleSize($title_size)
-    {
-        $this->db->where('name', 'title_size');
-        $query = $this->db->get('tb_font_size');
-        $query = $query->num_rows();
+    public function insertTitleSize($title_size)
+    {  
+        if(empty($article))
+        {
+            return array();
+        }      
+        else
+        {
+            $this->db->insert("tb_font_size", $title_size);
+        }           
+        
+    }
 
+    public function updateTitleSize($title_size)
+    {   
         if(empty($title_size))
         {
             return array();
         }      
-        elseif($query == 0)
-        {
-            return $this->db->insert("tb_font_size", $title_size);
-        }           
         else
         {
             $this->db->where('name', 'title_size');
-            return $this->db->update("tb_font_size", $title_size);
-        }    
+        return $this->db->update("tb_font_size", $title_size);
+        }
     }
+
 
 
     // Retorna "content" do artigo
@@ -51,27 +57,36 @@ class Gerenciador_model extends CI_Model {
     }
 
 
-    // Criar ou atualizar linha de texto do artigo
-    public function storeArticle($article)
-    {
-        $this->db->where('name', 'article');
-        $query = $this->db->get('tb_text');
-        $query = $query->num_rows();
-
+    // Cria ou atualiza linha de texto do artigo
+    public function insertArticle($article)
+    {  
         if(empty($article))
         {
             return array();
         }      
-        elseif($query == 0)
+        else
         {
             return $this->db->insert("tb_text", $article);
         }           
+        
+    }
+
+    public function updateArticle($article)
+    {   
+        if(empty($article))
+        {
+            return array();
+        }      
         else
         {
             $this->db->where('name', 'article');
             return $this->db->update("tb_text", $article);
         }
     }
+
+
+    
+    // Funções de votação
 
 
     // Retorna array com dados da caixa de votação
