@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Games 4 Devs</a>
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">CRUD & Gerenciador</a>
 	<div>
 		<form action="<?= base_url() ?>dashboard/pesquisar" method="post">
 			<input class="form-control form-control-dark" type="text" name="busca" id="busca" placeholder="Search" aria-label="Search" value="">

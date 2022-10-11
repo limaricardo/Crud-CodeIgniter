@@ -36,6 +36,11 @@ body {
     margin-top: 20px;
 }
 
+.edit-text-area form {
+    display: flex;
+    flex-direction: column;
+}
+
 .edit-text-area > label {
     position: relative;
     top: -22px;
@@ -80,5 +85,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+
 
 
