@@ -12,7 +12,9 @@ class Gerenciador extends CI_Controller {
 
     public function index() {
 
-		$data["title"] = "Dashboard - CodeIgniter";
+		$data["title"] = "Dashboard - Gerenciador Conteúdo";
+		$data["size"] = $this->gerenciador_model->titleSize('title_size');
+		$data["article"] = $this->gerenciador_model->articleText('article');
 
         $this->load->view('templates/header', $data);
 		$this->load->view('templates/nav-top', $data);
@@ -25,9 +27,22 @@ class Gerenciador extends CI_Controller {
 
 		$title_size = $_POST;
 
-		$this->gerenciador_model->store($title_size);
+		$this->gerenciador_model->storeTitleSize($title_size);
 
-		$data = $this->gerenciador_model->title_size_row()($title_size);
+		$data["size"] = $this->gerenciador_model->titleSize('title_size');
+		$data["article"] = $this->gerenciador_model->articleText('article');
+
+		$this->load->view('pages/homepage', $data); 
+	}
+
+	public function storeArticle() {
+
+		$article = $_POST;
+
+		$this->gerenciador_model->storeArticle($article);
+
+		$data["size"] = $this->gerenciador_model->titleSize('title_size');
+		$data["article"] = $this->gerenciador_model->articleText('article');
 
 		$this->load->view('pages/homepage', $data); 
 	}

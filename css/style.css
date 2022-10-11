@@ -1,0 +1,52 @@
+body {
+    height: 100vh;
+}
+
+.edit-title-size {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 1px solid black;
+    width: fit-content;
+    padding: 10px;
+    height: 80px;
+}
+
+.edit-title-size > label {
+    position: relative;
+    top: -22px;
+    background-color: white;
+    padding: 0px 10px;
+    width: fit-content;
+}
+
+.edit-title-size form {
+    position: relative;
+    top: -15px;
+}
+
+.edit-text-area {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 1px solid black;
+    width: fit-content;
+    padding: 10px;
+    height: fit-content;
+    margin-top: 20px;
+}
+
+.edit-text-area > label {
+    position: relative;
+    top: -22px;
+    background-color: white;
+    padding: 0px 10px;
+    width: fit-content;
+}
+
+.edit-text-area textarea {
+    position: relative;
+    top: -15px;
+}
+
+

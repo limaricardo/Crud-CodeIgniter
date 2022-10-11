@@ -47,6 +47,12 @@
               My Games
             </a>
           </li>
+					<li class="nav-item">
+            <a class="nav-link" href="<?= base_url('') ?>gerenciador">
+              <span data-feather="shopping-cart"></span>
+              Gerenciador de Conteúdo
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

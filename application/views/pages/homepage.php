@@ -8,5 +8,9 @@
 </head>
 <body>
     <h1 style="font-size: <?= $size ?>px">FONTE DO TITULO</h1>
+    <p><?= $article ?></p>
+    <a class="nav-link" href="<?= base_url('') ?>gerenciador">
+    Gerenciador
+    </a>
 </body>
 </html>
