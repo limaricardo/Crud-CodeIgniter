@@ -10,7 +10,8 @@ class Gerenciador extends CI_Controller {
 		$this->load->model("gerenciador_model");
 	}
 
-    public function index() {
+    public function index() 
+	{
 
 		$data["title"] = "Dashboard - Gerenciador Conteúdo";
 		$data["size"] = $this->gerenciador_model->titleSize('title_size');
@@ -23,7 +24,10 @@ class Gerenciador extends CI_Controller {
 		$this->load->view('templates/js', $data);
     }
 
-	public function storeFontSize() {
+
+	// Guardar "size" do título
+	public function storeFontSize() 
+	{
 
 		$title_size = $_POST;
 
@@ -34,8 +38,10 @@ class Gerenciador extends CI_Controller {
 
 		$this->load->view('pages/homepage', $data); 
 	}
-
-	public function storeArticle() {
+	
+	// Guardar "content" do artigo
+	public function storeArticle() 
+	{
 
 		$article = $_POST;
 
@@ -45,6 +51,34 @@ class Gerenciador extends CI_Controller {
 		$data["article"] = $this->gerenciador_model->articleText('article');
 
 		$this->load->view('pages/homepage', $data); 
+	}
+
+	// Gerar uma nova caixa de votação
+
+	public function storeVote() 
+	{
+		$vote = $_POST;
+
+		$query = $this->db->get('tb_vote');
+        $query = $query->num_rows();
+
+		if($query === 0)
+		{
+			$this->gerenciador_model->insertVote($vote);
+		}else 
+		{
+			$id = $this->db->get("tb_vote")->result_array();
+			$id = $id[0]["id"];
+			$this->gerenciador_model->updateVote($id, $vote);
+		}
+
+		$data["size"] = $this->gerenciador_model->titleSize('title_size');
+		$data["article"] = $this->gerenciador_model->articleText('article');
+		$data["vote"] = $this->db->get("tb_vote")->result_array();
+		
+		$this->load->view('pages/homepage', $data); 
+
+
 	}
 
 }

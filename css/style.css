@@ -50,3 +50,35 @@ body {
 }
 
 
+.vote {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 1px solid black;
+    width: fit-content;
+    padding: 10px;
+    height: fit-content;
+    margin-top: 20px;
+}
+
+.vote > label {
+    position: relative;
+    top: -22px;
+    background-color: white;
+    padding: 0px 10px;
+    width: fit-content;    
+}
+
+.vote form {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    gap: 10px;
+}
+
+.vote form label {
+    display: flex;
+    flex-direction: column;
+}
+
+
